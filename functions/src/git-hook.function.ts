@@ -7,9 +7,13 @@ const db = admin.firestore();
 
 export const gitHook = functions.https.onRequest(async (request, response) => {
   console.log(request.body.sender.id);
-  const messages = await db.collection('messages').where('ownerGithubId', '==', request.body.sender.id).get();
-  messages.docs.forEach((message) => {
-    console.log(message.data);
-  });
+  await db.collection('messages')
+    .where('ownerGithubId', '==', request.body.sender.id)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((message) => {
+        console.log( message.data());
+      });
+    });
   response.send('success!');
 });
