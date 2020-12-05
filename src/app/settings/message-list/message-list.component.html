@@ -1,0 +1,12 @@
+<div class="list">
+  <h1 class="list__title">褒め言葉辞書(仮)</h1>
+  <div class="list__add-message">
+    <button class="list__add-button">
+      <mat-icon class="list__icon">add_circle_outline</mat-icon>辞書に追加
+    </button>
+  </div>
+  <app-message-card
+    *ngFor="let message of message$ | async"
+    [message]="message"
+  ></app-message-card>
+</div>

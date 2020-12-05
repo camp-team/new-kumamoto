@@ -8,7 +8,7 @@ import { take } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   loginProcessing = false;

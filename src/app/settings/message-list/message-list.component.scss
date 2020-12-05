@@ -1,0 +1,21 @@
+.list {
+  padding: 8px;
+  &__title {
+    font-size: 24px;
+    text-align: center;
+  }
+  &__add-message {
+    text-align: right;
+    margin-bottom: 32px;
+  }
+  &__add-button {
+    color: #ffffff;
+    background-color: #424242;
+    border-radius: 40px;
+    padding: 4px 24px;
+    margin-right: 8px;
+  }
+  &__icon {
+    margin-right: 0 4px, 16px, 0;
+  }
+}
