@@ -48,12 +48,17 @@
   padding: 12px 28px;
   border: none;
   border-radius: 40px;
-  background-color: #424242;
+  background-color: $color-btn;
   color: #fff;
   font-size: 16px;
   line-height: 1;
   transition: opacity 0.4s;
   &:hover {
     opacity: 0.6;
+  }
+  &[disabled] {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: .8;
   }
 }
