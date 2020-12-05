@@ -8,6 +8,7 @@ import { MessageCardComponent } from './message-card/message-card.component';
 import { CreateMessageDialogComponent } from './create-message-dialog/create-message-dialog.component';
 import { DeleteMessageDialogComponent } from './delete-message-dialog/delete-message-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,6 @@ import { MatIconModule } from '@angular/material/icon';
     CreateMessageDialogComponent,
     DeleteMessageDialogComponent,
   ],
-  imports: [CommonModule, SettingsRoutingModule, MatIconModule],
+  imports: [CommonModule, SettingsRoutingModule, MatIconModule, MatMenuModule],
 })
 export class SettingsModule {}

@@ -10,8 +10,18 @@
     </div>
   </div>
   <div class="card__menu-button">
-    <button mat-icon-button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
+    <mat-menu #menu="matMenu" xPosition="before" class="header__menu">
+      <button mat-menu-item>
+        <mat-icon>note_add</mat-icon>
+        <span class="card__menu">編集する</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>note_add</mat-icon>
+        <span class="card__menu">削除する</span>
+      </button>
+    </mat-menu>
   </div>
 </div>
