@@ -1,5 +1,5 @@
-@import "mixins";
-@import "variables";
+@import 'mixins';
+@import 'variables';
 @import '~@angular/material/theming';
 
 @include mat-core();
@@ -9,13 +9,15 @@ $new-kumamoto-accent: mat-palette($mat-pink, A200, A100, A400);
 
 $new-kumamoto-warn: mat-palette($mat-red);
 
-$new-kumamoto-theme: mat-light-theme((
-  color: (
-    primary: $new-kumamoto-primary,
-    accent: $new-kumamoto-accent,
-    warn: $new-kumamoto-warn,
+$new-kumamoto-theme: mat-light-theme(
+  (
+    color: (
+      primary: $new-kumamoto-primary,
+      accent: $new-kumamoto-accent,
+      warn: $new-kumamoto-warn,
+    ),
   )
-));
+);
 @include angular-material-theme($new-kumamoto-theme);
 
 *,

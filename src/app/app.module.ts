@@ -28,7 +28,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,4 +56,4 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

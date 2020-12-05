@@ -1,5 +1,5 @@
-@import "mixins";
-@import "variables";
+@import 'mixins';
+@import 'variables';
 
 :host {
   position: fixed;
@@ -35,9 +35,9 @@
   &__link {
     text-decoration: none;
     color: inherit;
-    transition: opacity .4s;
+    transition: opacity 0.4s;
     &:hover {
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 }
@@ -52,8 +52,8 @@
   color: #fff;
   font-size: 16px;
   line-height: 1;
-  transition: opacity .4s;
+  transition: opacity 0.4s;
   &:hover {
-    opacity: .6;
+    opacity: 0.6;
   }
 }
