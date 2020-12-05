@@ -1,0 +1,59 @@
+@import 'mixins';
+@import 'variables';
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.header {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.12);
+  padding: 0 16px;
+  @include pc {
+    padding: 0 24px;
+  }
+  &__inner {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__icon {
+    background-position: center;
+    background-size: cover;
+    box-shadow: none;
+  }
+}
+
+.header-logo {
+  margin: 0;
+  font-size: 20px;
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.4s;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.btn-login {
+  cursor: pointer;
+  display: inline-block;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 40px;
+  background-color: #424242;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  transition: opacity 0.4s;
+  &:hover {
+    opacity: 0.6;
+  }
+}
