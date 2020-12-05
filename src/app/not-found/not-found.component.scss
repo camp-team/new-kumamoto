@@ -1,0 +1,50 @@
+@import 'variables';
+@import 'mixins';
+
+.nf {
+  color: #363636;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  min-height: calc(100vh - 56px - 56px);
+  @include sp {
+    min-height: calc(100vh - 56px - 37px);
+  }
+  &__logo {
+    font-size: 160px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  &__content {
+    font-size: 40px;
+    font-weight: bold;
+  }
+}
+.blob-primary {
+  z-index: -1;
+  position: absolute;
+  top: -400px;
+  right: -300px;
+  @include sp {
+    top: -600px;
+    right: -400px;
+  }
+}
+.blob-secondary {
+  z-index: -1;
+  position: absolute;
+  top: 200px;
+  left: -200px;
+  @include sp {
+    top: 100px;
+    left: -200px;
+  }
+}
+.blob-width {
+  width: 800px;
+}

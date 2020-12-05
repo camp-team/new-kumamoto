@@ -9,22 +9,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root',
 })
 export class MessageService {
-  constructor(
-    private db: AngularFirestore,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private db: AngularFirestore, private snackBar: MatSnackBar) {}
 
-  createMessage(githubId: number, messageData: Omit<Message, 'messageId' | 'ownerGithubId' | 'createdAt' | 'checked'>): Promise<void> {
+  createMessage(
+    githubId: number,
+    messageData: Omit<
+      Message,
+      'messageId' | 'ownerGithubId' | 'createdAt' | 'checked'
+    >
+  ): Promise<void> {
     const id = this.db.createId();
     const message: Message = {
       messageId: id,
-      createAt: firebase.default.firestore.Timestamp.now(),
+      createdAt: firebase.default.firestore.Timestamp.now(),
       userId: messageData.userId,
       ownerGithubId: githubId,
       name: messageData.name,
       photoUrl: messageData.photoUrl,
-      massage: messageData.massage,
-      checked: false,
+      message: messageData.message,
     };
     return this.db.doc<Message>(`messages/${id}`).set(message);
   }
@@ -42,9 +44,15 @@ export class MessageService {
       });
   }
 
+  getMessage(id: string): Observable<Message> {
+    return this.db.doc<Message>(`messages/${id}`).valueChanges();
+  }
+
   getMessages(userId: string): Observable<Message[]> {
     return this.db
-      .collection<Message>('messages', (ref) => ref.where('userId', '==', userId))
+      .collection<Message>('messages', (ref) =>
+        ref.where('userId', '==', userId)
+      )
       .valueChanges();
   }
 }

@@ -19,11 +19,11 @@
     <div class="left-one-box">
       <ng-container *ngIf="authService.afUser$ | async as user">
         <div class="left-one-box__avater-area">
-          <button mat-mini-fab class="left-one-box__avater-icon"></button>
+          <button mat-mini-fab class="left-one-box__avater-icon" [style.background-image]="'url(' + message.message.photoUrl + ')'"></button>
         </div>
       </ng-container>
       <div class="left-one-box__speech-bubble">
-        <div class="left-one-box__callout-comment">お疲れ様です！</div>
+        <div class="left-one-box__callout-comment">{{ message.message.message }}</div>
       </div>
     </div>
   </div>

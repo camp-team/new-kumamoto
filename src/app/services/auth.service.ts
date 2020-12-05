@@ -8,7 +8,7 @@ import { take } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   loginProcessing = false;
@@ -44,7 +44,7 @@ export class AuthService {
             userId: this.uid,
             name: 'GitCheer運営',
             photoUrl: '',
-            massage: 'お疲れ様でした！いい感じですね。',
+            message: 'お疲れ様でした！いい感じですね。',
           };
           this.messageService.createMessage(this.githubId, initialMessage);
         }
