@@ -4,7 +4,7 @@
       <a routerLink="/" class="header-logo__link">Git Cheer</a>
     </h1>
     <div class="header__actions">
-      <ng-container *ngIf="isLogin else default">
+      <ng-container *ngIf="authService.afUser$ | async as user; else default">
         <button
           mat-mini-fab
           color="primary"
@@ -21,14 +21,18 @@
             <mat-icon>settings</mat-icon>
             <span>設定</span>
           </a>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="authService.logout()">
             <mat-icon>exit_to_app</mat-icon>
             <span>ログアウト</span>
           </button>
         </mat-menu>
       </ng-container>
       <ng-template #default>
-        <button class="btn-login">ログイン</button>
+        <button
+          class="btn-login"
+          (click)="authService.login()"
+          [disabled]="authService.loginProcessing"
+        >ログイン</button>
       </ng-template>
     </div>
   </div>
