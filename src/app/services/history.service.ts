@@ -12,7 +12,7 @@ export class HistoryService {
 
   getHistories(githubId: number): Observable<History[]> {
     return this.db
-      .collection<History>('histories', (ref) => ref.where('ownerGithubId', '==', githubId))
+      .collection<History>('histories', (ref) => ref.where('ownerGithubId', '==', githubId).orderBy('createdAt'))
       .valueChanges();
   }
 }
