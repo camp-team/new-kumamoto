@@ -4,6 +4,6 @@ export interface Message {
   ownerGithubId: number;
   name: string;
   photoUrl: string;
-  massage: string;
-  createAt?: firebase.default.firestore.Timestamp;
+  message: string;
+  createdAt?: firebase.default.firestore.Timestamp;
 }
