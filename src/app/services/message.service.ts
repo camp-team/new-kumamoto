@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Message } from '../interfaces/message';
-import { firestore } from 'firebase';
+import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
@@ -12,15 +11,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MessageService {
   constructor(
     private db: AngularFirestore,
-    private router: Router,
     private snackBar: MatSnackBar
   ) {}
 
-  createMessage(messageData: Omit<Message, 'id' | 'createdAt'>): Promise<void> {
+  createMessage(messageData: Omit<Message, 'messageId' | 'createdAt' | 'checked'>): Promise<void> {
     const id = this.db.createId();
     const message: Message = {
       messageId: id,
-      createAt: firestore.Timestamp.now(),
+      createAt: firebase.default.firestore.Timestamp.now(),
       userId: messageData.userId,
       name: messageData.name,
       photoUrl: messageData.photoUrl,
@@ -39,10 +37,7 @@ export class MessageService {
       .doc<Message>(`messages/${messageId}`)
       .delete()
       .then(() => {
-        this.router.navigateByUrl('mypage');
-        this.snackBar.open('メッセージを削除しました！', null, {
-          duration: 2000,
-        });
+        this.snackBar.open('メッセージを削除しました！');
       });
   }
 
