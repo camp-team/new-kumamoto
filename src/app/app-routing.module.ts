@@ -15,6 +15,11 @@ const routes: Routes = [
       import('./mypage/mypage.module').then((m) => m.MypageModule),
   },
   {
+    path: 'settings',
+    loadChildren: () =>
+      import('./settings/settings.module').then((m) => m.SettingsModule),
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   },
