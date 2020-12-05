@@ -4,7 +4,7 @@
       <a routerLink="/" class="header-logo__link">Git Cheer</a>
     </h1>
     <div class="header__actions">
-      <ng-container *ngIf="isLogin else default">
+      <ng-container *ngIf="isLogin; else default">
         <button
           mat-mini-fab
           color="primary"
