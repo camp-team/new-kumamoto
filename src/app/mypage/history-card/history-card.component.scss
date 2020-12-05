@@ -1,0 +1,48 @@
+.history-card {
+  margin-bottom: 16px;
+}
+
+.one-area {
+  margin: 32px 0;
+}
+
+.one-box {
+  display: flex;
+  margin-bottom: 24px;
+  &__speech-bubble {
+    width: 63%;
+    background-color: rgb(88, 224, 47);
+    border-radius: 42px;
+  }
+  &__callout-comment {
+    position: relative;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+  &__callout-comment::before {
+    content: '';
+    position: absolute;
+    left: auto;
+    top: -12px;
+    right: -10px;
+    border-top: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid rgb(88, 224, 47);
+    border-radius: 50%;
+    transform: rotate(-54deg);
+  }
+  &__callout-comment::after {
+    content: '';
+    position: absolute;
+    left: auto;
+    top: -36px;
+    right: -23px;
+    border-top: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+    border-bottom: 20px solid #fff;
+    border-radius: 30%;
+    transform: rotate(-23deg);
+  }
+}
