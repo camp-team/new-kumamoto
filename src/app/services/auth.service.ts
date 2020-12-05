@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,7 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     private router: Router,
     private snackBar: MatSnackBar,
+    private messageService: MessageService
   ) {
     this.afUser$.subscribe((user) => {
       this.uid = user?.uid;
@@ -28,30 +31,33 @@ export class AuthService {
     const provider = new firebase.default.auth.GithubAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
     const userCredential = await this.afAuth.signInWithPopup(provider);
-    // return this.userService
-    //   .getUserData(this.uid)
-    //   .pipe(take(1))
-    //   .toPromise()
-    //   .then((userDoc) => {
-    //     if (!userDoc) {
-    //       this.userService
-    //         .createUser(this.uid)
-    //         .then(() => {
-    //           this.snackBar.open('ログインしました。', '閉じる');
-    //           this.router.navigateByUrl('/mypage');
-    //         })
-    //         .catch((error) => {
-    //           console.error(error.message);
-    //           this.snackBar.open(
-    //             'ログインエラーです。数秒後にもう一度お試しください。',
-    //             '閉じる'
-    //           );
-    //         })
-    //         .finaly(() => {
-    //           this.loginProcessing = false;
-    //         });
-    //     }
-    //   });
+    return this.messageService
+      .getMessages(this.uid)
+      .pipe(take(1))
+      .toPromise()
+      .then((messages) => {
+        if (messages.length === 0) {
+          const initialMessage = {
+            userId: this.uid,
+            name: 'GitCheer運営',
+            photoUrl: '',
+            massage: 'お疲れ様でした！いい感じですね。',
+          };
+          this.messageService.createMessage(initialMessage);
+        }
+        this.snackBar.open('ログインしました。', '閉じる');
+        this.router.navigateByUrl('/mypage');
+      })
+      .catch((error) => {
+        console.error(error.message);
+        this.snackBar.open(
+          'ログインエラーです。数秒後にもう一度お試しください。',
+          '閉じる'
+        );
+      })
+      .finally(() => {
+        this.loginProcessing = false;
+      });
   }
 
   logout() {
