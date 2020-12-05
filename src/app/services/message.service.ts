@@ -12,13 +12,18 @@ export class MessageService {
   constructor(private db: AngularFirestore, private snackBar: MatSnackBar) {}
 
   createMessage(
-    messageData: Omit<Message, 'messageId' | 'createdAt' | 'checked'>
+    githubId: number,
+    messageData: Omit<
+      Message,
+      'messageId' | 'ownerGithubId' | 'createdAt' | 'checked'
+    >
   ): Promise<void> {
     const id = this.db.createId();
     const message: Message = {
       messageId: id,
       createAt: firebase.default.firestore.Timestamp.now(),
       userId: messageData.userId,
+      ownerGithubId: githubId,
       name: messageData.name,
       photoUrl: messageData.photoUrl,
       massage: messageData.massage,
@@ -42,7 +47,7 @@ export class MessageService {
 
   getMessages(userId: string): Observable<Message[]> {
     return this.db
-      .collection<Message>(`messages`, (ref) =>
+      .collection<Message>('messages', (ref) =>
         ref.where('userId', '==', userId)
       )
       .valueChanges();
