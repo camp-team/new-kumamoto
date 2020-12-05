@@ -13,14 +13,17 @@ import { MessageService } from 'src/app/services/message.service';
 export class MessageListComponent implements OnInit {
   userId: string;
   user$ = this.authService.afUser$;
-  message$: Observable<Message[]> = this.messageService.getMessages(
-    this.authService.uid
-  );
+  message$: Observable<Message[]>;
 
   constructor(
     private messageService: MessageService,
     private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.afUser$.subscribe((user) => {
+      this.userId = user?.uid;
+      this.message$ = this.messageService.getMessages(this.userId);
+    });
+  }
 }
