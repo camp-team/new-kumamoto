@@ -23,7 +23,7 @@ export class AuthService {
     private messageService: MessageService
   ) {
     this.afUser$.subscribe((user) => {
-      this.githubId = +user.providerData[0].uid;
+      this.githubId = +user?.providerData[0].uid;
       this.uid = user?.uid;
     });
   }
@@ -33,8 +33,9 @@ export class AuthService {
     const provider = new firebase.default.auth.GithubAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
     const userCredential = await this.afAuth.signInWithPopup(provider);
+    const { user } = userCredential;
     return this.messageService
-      .getMessages(this.uid)
+      .getMessages(user.uid)
       .pipe(take(1))
       .toPromise()
       .then((messages) => {

@@ -6,16 +6,26 @@ admin.initializeApp();
 const db = admin.firestore();
 
 export const gitHook = functions.https.onRequest(async (request, response) => {
-  console.log(request.body.sender.id);
+  const ownerGithubId: string = request.body.sender.id;
   const messageIds: string[] = [];
   await db.collection('messages')
-    .where('ownerGithubId', '==', request.body.sender.id)
+    .where('ownerGithubId', '==', ownerGithubId)
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((message) => {
         messageIds.push(message.data().messageId);
       });
     });
-  console.log(messageIds);
+
+  const serectedMessage = messageIds[Math.floor(Math.random() * messageIds.length)];
+  const id = db.collection('_').doc().id;
+  const historyData = {
+    id,
+    messageId: serectedMessage,
+    ownerGithubId,
+    createdAt: new Date(),
+    checked: false,
+  };
+  await db.doc(`histories/${id}`).set(historyData);
   response.send('success!');
 });
