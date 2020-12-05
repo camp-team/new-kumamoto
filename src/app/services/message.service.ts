@@ -46,7 +46,7 @@ export class MessageService {
       });
   }
 
-  getMessages(userId: string): Observable<Message[]> {
+  getMessages(): Observable<Message[]> {
     return this.db.collection<Message>(`messages`).valueChanges();
   }
 }
