@@ -10,7 +10,7 @@ export class HistoryService {
 
   constructor(private db: AngularFirestore) { }
 
-  getMessages(githubId: number): Observable<History[]> {
+  getHistories(githubId: number): Observable<History[]> {
     return this.db
       .collection<History>('histories', (ref) => ref.where('ownerGithubId', '==', githubId))
       .valueChanges();
