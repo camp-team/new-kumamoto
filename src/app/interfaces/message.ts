@@ -1,7 +1,7 @@
 export interface Message {
   messageId: string;
   userId: string;
-  ownerGithubId?: number;
+  ownerGithubId: number;
   name: string;
   photoUrl: string;
   massage: string;

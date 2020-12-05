@@ -13,6 +13,7 @@ import { MessageService } from './message.service';
 export class AuthService {
   loginProcessing = false;
   uid: string;
+  githubId: number;
   afUser$: Observable<firebase.default.User> = this.afAuth.user;
 
   constructor(
@@ -22,6 +23,7 @@ export class AuthService {
     private messageService: MessageService
   ) {
     this.afUser$.subscribe((user) => {
+      this.githubId = +user.providerData[0].uid;
       this.uid = user?.uid;
     });
   }
@@ -43,7 +45,7 @@ export class AuthService {
             photoUrl: '',
             massage: 'お疲れ様でした！いい感じですね。',
           };
-          this.messageService.createMessage(initialMessage);
+          this.messageService.createMessage(this.githubId, initialMessage);
         }
         this.snackBar.open('ログインしました。', '閉じる');
         this.router.navigateByUrl('/mypage');

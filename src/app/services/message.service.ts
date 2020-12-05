@@ -14,12 +14,13 @@ export class MessageService {
     private snackBar: MatSnackBar
   ) {}
 
-  createMessage(messageData: Omit<Message, 'messageId' | 'createdAt' | 'checked'>): Promise<void> {
+  createMessage(githubId: number, messageData: Omit<Message, 'messageId' | 'ownerGithubId' | 'createdAt' | 'checked'>): Promise<void> {
     const id = this.db.createId();
     const message: Message = {
       messageId: id,
       createAt: firebase.default.firestore.Timestamp.now(),
       userId: messageData.userId,
+      ownerGithubId: githubId,
       name: messageData.name,
       photoUrl: messageData.photoUrl,
       massage: messageData.massage,
