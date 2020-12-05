@@ -9,12 +9,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root',
 })
 export class MessageService {
-  constructor(
-    private db: AngularFirestore,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private db: AngularFirestore, private snackBar: MatSnackBar) {}
 
-  createMessage(messageData: Omit<Message, 'messageId' | 'createdAt' | 'checked'>): Promise<void> {
+  createMessage(
+    messageData: Omit<Message, 'messageId' | 'createdAt' | 'checked'>
+  ): Promise<void> {
     const id = this.db.createId();
     const message: Message = {
       messageId: id,
@@ -41,7 +40,11 @@ export class MessageService {
       });
   }
 
-  getMessages(): Observable<Message[]> {
-    return this.db.collection<Message>(`messages`).valueChanges();
+  getMessages(userId: string): Observable<Message[]> {
+    return this.db
+      .collection<Message>(`messages`, (ref) =>
+        ref.where('userId', '==', userId)
+      )
+      .valueChanges();
   }
 }

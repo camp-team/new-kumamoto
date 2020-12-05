@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { Message } from 'src/app/interfaces/message';
+import { AuthService } from 'src/app/services/auth.service';
 import { MessageService } from 'src/app/services/message.service';
 
 @Component({
@@ -9,9 +11,16 @@ import { MessageService } from 'src/app/services/message.service';
   styleUrls: ['./message-list.component.scss'],
 })
 export class MessageListComponent implements OnInit {
-  message$: Observable<Message[]> = this.messageService.getMessages();
+  userId: string;
+  user$ = this.authService.afUser$;
+  message$: Observable<Message[]> = this.messageService.getMessages(
+    this.authService.uid
+  );
 
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private messageService: MessageService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {}
 }
