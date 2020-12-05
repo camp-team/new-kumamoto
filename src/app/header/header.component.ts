@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  readonly isLogin = false;
+  readonly user = {
+    photoURL: 'https://placehold.jp/80x80.png'
+  };
 
   constructor() { }
 
