@@ -32,7 +32,7 @@
           class="btn-login"
           (click)="authService.login()"
           [disabled]="authService.loginProcessing"
-        >ログイン</button>
+        >{{ authService.loginProcessing ? 'ログイン中…' : 'ログイン' }}</button>
       </ng-template>
     </div>
   </div>
