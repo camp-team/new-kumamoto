@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card__main">
+    <div
+      class="card__avatar"
+      [style.background-image]="'url(' + message.photoUrl + ')'"
+    ></div>
+    <div class="card__contents">
+      <div class="card__user-name">{{ message.name }}</div>
+      <div class="card__text">{{ message.massage }}</div>
+    </div>
+  </div>
+  <div class="card__menu-button">
+    <button mat-icon-button>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+</div>
