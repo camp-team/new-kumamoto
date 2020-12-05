@@ -1,1 +1,30 @@
-<p>history-card works!</p>
+<div class="history-card">
+  <div class="one-area">
+    <div class="one-box">
+      <div class="one-box__speech-bubble">
+        <div class="one-box__callout-comment">プルリクが送信されました！</div>
+      </div>
+      <ng-container *ngIf="authService.afUser$ | async as user">
+        <div class="one-box__avater-area">
+          <button
+            mat-mini-fab
+            color="primary"
+            [style.background-image]="'url(' + user.photoURL + ')'"
+            class="one-box__avater-icon"
+          ></button>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="left-one-box">
+      <ng-container *ngIf="authService.afUser$ | async as user">
+        <div class="left-one-box__avater-area">
+          <button mat-mini-fab class="left-one-box__avater-icon"></button>
+        </div>
+      </ng-container>
+      <div class="left-one-box__speech-bubble">
+        <div class="left-one-box__callout-comment">お疲れ様です！</div>
+      </div>
+    </div>
+  </div>
+</div>
