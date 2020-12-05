@@ -120,8 +120,13 @@
               "devServerTarget": "new-kumamoto:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "new-kumamoto"
 }

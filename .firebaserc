@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "git-cheer"
+  },
+  "targets": {
+    "git-cheer": {
+      "hosting": {
+        "new-kumamoto": [
+          "git-cheer"
+        ]
+      }
+    }
   }
 }
