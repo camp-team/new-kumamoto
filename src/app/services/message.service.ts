@@ -43,6 +43,8 @@ export class MessageService {
   }
 
   getMessages(userId: string): Observable<Message[]> {
-    return this.db.collection<Message>(`messages`).valueChanges();
+    return this.db
+      .collection<Message>('messages', (ref) => ref.where('userId', '==', userId))
+      .valueChanges();
   }
 }
