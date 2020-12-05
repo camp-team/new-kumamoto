@@ -1,1 +1,25 @@
-<app-history-card *ngFor="let message of messages$ | async" [message]="message"></app-history-card>
+<ng-container *ngIf="messages$ | async as HistoryWithMessage; else default">
+  <app-history-card
+    *ngFor="let message of messages$ | async"
+    [message]="message"
+  ></app-history-card>
+  <div class="actions">
+    <a
+      href="https://github.com/apps/gitcheerapp"
+      target="_blank"
+      class="dictionary-btn"
+      >Githubリポジトリに連携する</a
+    >
+  </div>
+</ng-container>
+<ng-template #default>
+  <p class="register">褒め言葉を辞書に登録しよう！</p>
+  <div class="actions">
+    <a
+      href="https://github.com/apps/gitcheerapp"
+      target="_blank"
+      class="dictionary-btn"
+      >他のGithubリポジトリと連携</a
+    >
+  </div>
+</ng-template>
