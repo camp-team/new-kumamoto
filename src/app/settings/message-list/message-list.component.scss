@@ -1,0 +1,20 @@
+.list {
+  &__title {
+    font-size: 24px;
+    text-align: center;
+  }
+  &__add-message {
+    text-align: right;
+    text-align: right;
+  }
+  &__add-button {
+    align-items: center;
+    color: #ffffff;
+    background-color: #424242;
+    border-radius: 30px;
+    padding: 8px 16px;
+  }
+  &__icon {
+    margin-right: 4px;
+  }
+}
