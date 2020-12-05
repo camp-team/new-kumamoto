@@ -24,7 +24,6 @@ export class MessageService {
       name: messageData.name,
       photoUrl: messageData.photoUrl,
       massage: messageData.massage,
-      checked: false,
     };
     return this.db.doc<Message>(`messages/${id}`).set(message);
   }
