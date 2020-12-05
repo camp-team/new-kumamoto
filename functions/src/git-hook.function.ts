@@ -10,5 +10,5 @@ export const gitHook = functions.https.onRequest(async (request, response) => {
   messages.docs.forEach((message) => {
     console.log(message.data);
   });
-  response.send('success');
+  response.send('success!');
 });
