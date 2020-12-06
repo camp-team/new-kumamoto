@@ -11,6 +11,7 @@
   },
   "hosting": [
     {
+      "target": "new-kumamoto",
       "public": "dist/new-kumamoto",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
     },
