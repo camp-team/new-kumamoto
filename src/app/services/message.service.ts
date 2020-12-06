@@ -4,12 +4,17 @@ import { Message } from '../interfaces/message';
 import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageService {
-  constructor(private db: AngularFirestore, private snackBar: MatSnackBar) {}
+  constructor(
+    private db: AngularFirestore,
+    private snackBar: MatSnackBar,
+    private storage: AngularFireStorage
+  ) {}
 
   createMessage(
     githubId: number,
@@ -54,5 +59,14 @@ export class MessageService {
         ref.where('userId', '==', userId)
       )
       .valueChanges();
+  }
+
+  async uploadImage(userId: string, file: File) {
+    const result = await this.storage.ref(`messages/${userId}`).put(file);
+    const photoUrl = await result.ref.getDownloadURL();
+
+    this.db.doc<Message>(`messages/${userId}`).update({
+      photoUrl,
+    });
   }
 }
