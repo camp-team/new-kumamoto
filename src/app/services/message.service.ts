@@ -26,7 +26,7 @@ export class MessageService {
       ownerGithubId: githubId,
       name: messageData.name,
       photoUrl: messageData.photoUrl,
-      massage: messageData.massage,
+      message: messageData.message,
       checked: false,
     };
     return this.db.doc<Message>(`messages/${id}`).set(message);

@@ -44,7 +44,7 @@ export class AuthService {
             userId: this.uid,
             name: 'GitCheer運営',
             photoUrl: '',
-            massage: 'お疲れ様でした！いい感じですね。',
+            message: 'お疲れ様でした！いい感じですね。',
           };
           this.messageService.createMessage(this.githubId, initialMessage);
         }

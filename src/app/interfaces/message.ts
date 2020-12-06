@@ -4,7 +4,7 @@ export interface Message {
   ownerGithubId: number;
   name: string;
   photoUrl: string;
-  massage: string;
+  message: string;
   checked: boolean;
   createAt?: firebase.default.firestore.Timestamp;
 }
