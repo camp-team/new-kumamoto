@@ -9,6 +9,10 @@ import { CreateMessageDialogComponent } from './create-message-dialog/create-mes
 import { DeleteMessageDialogComponent } from './delete-message-dialog/delete-message-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,16 @@ import { MatMenuModule } from '@angular/material/menu';
     CreateMessageDialogComponent,
     DeleteMessageDialogComponent,
   ],
-  imports: [CommonModule, SettingsRoutingModule, MatIconModule, MatMenuModule],
+  imports: [
+    CommonModule,
+    SettingsRoutingModule,
+    MatIconModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
 })
 export class SettingsModule {}
