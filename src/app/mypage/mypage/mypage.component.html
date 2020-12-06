@@ -3,7 +3,16 @@
     <h1>褒められ履歴☺️</h1>
   </div>
   <app-history-list></app-history-list>
+
   <div routerlink="/settings" class="mypage__dictionary">
     <button class="mypage__dictionary-btn">褒め言葉辞書</button>
   </div>
 </div>
+<footer class="ft">
+  <p class="ft__content">
+    アカウント削除をご希望の方は
+    <span class="ft__dialog">
+      <a (click)="openRemoveDialog()">こちら</a>
+    </span>
+  </p>
+</footer>

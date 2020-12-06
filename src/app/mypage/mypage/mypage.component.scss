@@ -26,4 +26,36 @@
       width: 100%;
     }
   }
+  &__actions {
+    margin: 16px 0 24px;
+    padding: 0 16px;
+    text-align: center;
+    @include pc {
+      padding: 0 24px;
+    }
+  }
+  &__btn-github-setup {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 42px;
+    background-color: $color-btn;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    line-height: 1;
+    text-decoration: none;
+    transition: opacity 0.4s;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+.ft {
+  padding: 24px;
+  text-align: center;
+  background-color: $color-base;
+  &__dialog {
+    border-bottom: solid 1px;
+    color: #555555;
+  }
 }

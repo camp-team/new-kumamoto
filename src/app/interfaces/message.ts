@@ -5,6 +5,5 @@ export interface Message {
   name: string;
   photoUrl: string;
   message: string;
-  checked: boolean;
-  createAt?: firebase.default.firestore.Timestamp;
+  createdAt: firebase.default.firestore.Timestamp;
 }

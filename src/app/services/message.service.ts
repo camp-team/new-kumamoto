@@ -21,13 +21,12 @@ export class MessageService {
     const id = this.db.createId();
     const message: Message = {
       messageId: id,
-      createAt: firebase.default.firestore.Timestamp.now(),
+      createdAt: firebase.default.firestore.Timestamp.now(),
       userId: messageData.userId,
       ownerGithubId: githubId,
       name: messageData.name,
       photoUrl: messageData.photoUrl,
       message: messageData.message,
-      checked: false,
     };
     return this.db.doc<Message>(`messages/${id}`).set(message);
   }
@@ -43,6 +42,10 @@ export class MessageService {
       .then(() => {
         this.snackBar.open('メッセージを削除しました！');
       });
+  }
+
+  getMessage(id: string): Observable<Message> {
+    return this.db.doc<Message>(`messages/${id}`).valueChanges();
   }
 
   getMessages(userId: string): Observable<Message[]> {

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { HistoryWithMessage } from 'src/app/interfaces/history';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./history-card.component.scss'],
 })
 export class HistoryCardComponent implements OnInit {
+  @Input() message: HistoryWithMessage;
+
   constructor(public authService: AuthService) {}
 
   ngOnInit(): void {}

@@ -22,6 +22,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     HeaderComponent,
     FooterComponent,
     NotFoundComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatTooltipModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
   ],
   providers: [
     { provide: REGION, useValue: 'asia-northeast1' },
@@ -54,6 +58,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
       },
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
