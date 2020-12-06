@@ -1,0 +1,18 @@
+<div class="container">
+  <p class="contents">退会するとデータは完全に削除されます。</p>
+  <p class="contents">退会しますか？</p>
+  <div class="delete-btns">
+    <button
+      class="delete-btns__delete"
+      mat-flat-button
+      color="primary"
+      [mat-dialog-close]="true"
+      (click)="deleteAcount()"
+    >
+      退会
+    </button>
+    <button class="buttons__cancel" mat-flat-button mat-dialog-close>
+      キャンセル
+    </button>
+  </div>
+</div>

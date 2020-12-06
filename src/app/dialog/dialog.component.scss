@@ -1,0 +1,13 @@
+.contents {
+  margin: 8px;
+}
+.delete-btns {
+  display: flex;
+  justify-content: center;
+  &__delete {
+    margin: 10px;
+  }
+  &__cancel {
+    margin: 10px;
+  }
+}
