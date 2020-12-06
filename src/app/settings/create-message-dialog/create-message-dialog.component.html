@@ -1,1 +1,56 @@
-<p>create-message-dialog works!</p>
+<ng-container *ngIf="githubId$ | async as message">
+  <div class="heading">
+    <h2 class="heading__title" mat-dialog-title>メッセージ登録</h2>
+  </div>
+  <div class="wrapper">
+    <form [formGroup]="form" (ngSubmit)="submit(message.ownerGithubId)">
+      <mat-dialog-content class="form">
+        <p class="form__title">お名前</p>
+        <mat-form-field appearance="outline" class="form__name">
+          <input
+            type="text"
+            matInput
+            placeholder="ex) Ninoさん"
+            formControlName="name"
+            autocomplete="on"
+            required
+          />
+        </mat-form-field>
+
+        <p class="form__title">言われたい言葉</p>
+        <mat-form-field appearance="outline" class="form__text">
+          <input
+            type="text"
+            matInput
+            placeholder="ex) いいっすねぇー！"
+            formControlName="text"
+            autocomplete="off"
+            required
+            matTextareaAutosize
+          />
+        </mat-form-field>
+
+        <p class="form__title">アイコン画像を登録</p>
+        <input
+          type="file"
+          accept="image/png, image/jpg"
+          (change)="uploadImage($event)"
+        />
+      </mat-dialog-content>
+    </form>
+    <mat-dialog-actions>
+      <button matDialogClose type="button" class="form__close-btn">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <button
+        type="submit"
+        [mat-dialog-close]="true"
+        class="form__submit-btn"
+        [disabled]="form.invalid"
+      >
+        <mat-icon>send</mat-icon>
+      </button>
+    </mat-dialog-actions>
+  </div>
+</ng-container>
