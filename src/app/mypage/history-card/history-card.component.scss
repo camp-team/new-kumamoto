@@ -36,14 +36,14 @@
     content: '';
     position: absolute;
     left: auto;
-    top: -12px;
-    right: 48px;
+    top: -13px;
+    right: 47px;
     border-top: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-left: 15px solid transparent;
+    border-left: 15px solid rgb(88, 224, 47);
     border-bottom: 15px solid rgb(88, 224, 47);
     border-radius: 50%;
-    transform: rotate(-54deg);
+    transform: rotate(-111deg);
   }
   &__callout-comment::after {
     content: '';
@@ -55,7 +55,7 @@
     border-right: 20px solid transparent;
     border-left: 20px solid transparent;
     border-bottom: 20px solid #fff;
-    border-radius: 30%;
+    border-radius: 28%;
     transform: rotate(-23deg);
   }
 }
@@ -90,26 +90,26 @@
     content: '';
     position: absolute;
     left: auto;
-    top: -12px;
+    top: -13px;
     left: -10px;
     border-top: 15px solid transparent;
-    border-right: 15px solid transparent;
+    border-right: 15px solid rgb(214, 211, 211);
     border-left: 15px solid transparent;
     border-bottom: 15px solid rgb(214, 211, 211);
     border-radius: 50%;
-    transform: rotate(54deg);
+    transform: rotate(55deg);
   }
   &__callout-comment::after {
     content: '';
     position: absolute;
     left: auto;
     top: -36px;
-    left: -23px;
-    border-top: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-left: 20px solid transparent;
+    left: -28px;
+    border-top: 21px solid transparent;
+    border-right: 20px solid #fff;
+    border-left: 25px solid #fff;
     border-bottom: 20px solid #fff;
-    border-radius: 30%;
-    transform: rotate(23deg);
+    border-radius: 39%;
+    transform: rotate(21deg);
   }
 }
