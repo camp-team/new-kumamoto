@@ -9,6 +9,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [MypageComponent, HistoryListComponent, HistoryCardComponent],
-  imports: [CommonModule, MypageRoutingModule, MatDialogModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    MypageRoutingModule,
+    MatDialogModule,
+    MatButtonModule,
+  ],
 })
 export class MypageModule {}
